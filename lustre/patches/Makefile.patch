@@ -1,0 +1,22 @@
+--- Makefile	2014-04-11 19:50:54.000000000 +0000
++++ ../../linux-2.6.32-431.17.1.el6.x86_64/Makefile	2014-09-09 13:14:26.951832186 +0000
+@@ -1,7 +1,7 @@
+ VERSION = 2
+ PATCHLEVEL = 6
+ SUBLEVEL = 32
+-EXTRAVERSION =
++EXTRAVERSION = -dss
+ NAME = Man-Eating Seals of Antiquity
+ RHEL_MAJOR = 6
+ RHEL_MINOR = 5
+@@ -359,8 +359,8 @@
+ 
+ ifneq (,$(filter $(ARCH), i386 x86_64))
+ CPP_MAJOR       := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f1)
+-CPP_MINOR       := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f2)
+-CPP_PATCH       := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f3)
++CPP_MINOR       := $(shell  echo `$(CPP) -dumpversion`.0.0.0 | cut -d'.' -f2  )
++CPP_PATCH       := $(shell  echo `$(CPP) -dumpversion`.0.0.0 | cut -d'.' -f3 )
+ # Assumes that major, minor, and patch cannot exceed 999
+ CPP_VERS        := $(shell expr $(CPP_MAJOR) \* 1000000 + $(CPP_MINOR) \* 1000 \
+ 		   + $(CPP_PATCH))

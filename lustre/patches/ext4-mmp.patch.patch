@@ -1,0 +1,13 @@
+--- ext4-mmp.patch_	2014-09-15 10:34:39.883112415 +0100
++++ ext4-mmp.patch	2014-09-15 10:34:50.307112777 +0100
+@@ -230,7 +230,10 @@
+ +void __dump_mmp_msg(struct super_block *sb, struct mmp_struct *mmp,
+ +                   const char *function, const char *msg)
+ +{
+++        #pragma GCC diagnostic push
+++        #pragma GCC diagnostic ignored "-Wformat-security"
+ +       __ext4_warning(sb, function, msg);
+++        #pragma GCC diagnostic pop
+ +       __ext4_warning(sb, function,
+ +                      "MMP failure info: last update time: %llu, last update "
+ +                      "node: %s, last update device: %s",

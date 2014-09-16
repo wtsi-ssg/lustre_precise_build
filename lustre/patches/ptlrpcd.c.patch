@@ -1,0 +1,13 @@
+--- ptlrpcd.c.orig	2014-09-15 13:39:10.488845263 +0000
++++ ptlrpcd.c	2014-09-15 13:39:58.260846923 +0000
+@@ -729,7 +729,10 @@
+ 				GOTO(out_env, rc);
+ 		}
+ 
++        #pragma GCC diagnostic push
++        #pragma GCC diagnostic ignored "-Wformat-security"
+ 		task = kthread_run(ptlrpcd, pc, pc->pc_name);
++        #pragma GCC diagnostic pop
+ 		if (IS_ERR(task))
+ 			GOTO(out_env, rc = PTR_ERR(task));
+ 

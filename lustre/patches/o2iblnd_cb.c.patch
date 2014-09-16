@@ -1,0 +1,14 @@
+--- o2iblnd_cb.c.orig	2014-09-15 11:48:52.787392252 +0000
++++ o2iblnd_cb.c	2014-09-15 11:49:55.171394420 +0000
+@@ -1807,7 +1807,11 @@
+ int
+ kiblnd_thread_start(int (*fn)(void *arg), void *arg, char *name)
+ {
++        #pragma GCC diagnostic push
++        #pragma GCC diagnostic ignored "-Wformat-security"
++
+ 	struct task_struct *task = kthread_run(fn, arg, name);
++        #pragma GCC diagnostic pop
+ 
+ 	if (IS_ERR(task))
+ 		return PTR_ERR(task);

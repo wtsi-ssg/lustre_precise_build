@@ -1,0 +1,13 @@
+--- service.c.orig	2014-09-15 12:39:44.103498285 +0000
++++ service.c	2014-09-15 12:40:57.531500837 +0000
+@@ -2859,7 +2859,10 @@
+ 	}
+ 
+ 	CDEBUG(D_RPCTRACE, "starting thread '%s'\n", thread->t_name);
++        #pragma GCC diagnostic push
++        #pragma GCC diagnostic ignored "-Wformat-security"
+ 	rc = PTR_ERR(kthread_run(ptlrpc_main, thread, thread->t_name));
++        #pragma GCC diagnostic pop
+ 	if (IS_ERR_VALUE(rc)) {
+ 		CERROR("cannot start thread '%s': rc %d\n",
+ 		       thread->t_name, rc);

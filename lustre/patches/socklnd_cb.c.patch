@@ -1,0 +1,15 @@
+--- socklnd_cb.c.orig	2014-09-15 11:58:26.603412193 +0000
++++ socklnd_cb.c	2014-09-15 11:59:08.987413665 +0000
+@@ -1010,7 +1010,12 @@
+ int
+ ksocknal_thread_start(int (*fn)(void *arg), void *arg, char *name)
+ {
++        #pragma GCC diagnostic push
++        #pragma GCC diagnostic ignored "-Wformat-security"
++
+ 	struct task_struct *task = kthread_run(fn, arg, name);
++        #pragma GCC diagnostic pop
++
+ 
+ 	if (IS_ERR(task))
+ 		return PTR_ERR(task);

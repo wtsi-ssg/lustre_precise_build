@@ -1,0 +1,14 @@
+--- workitem.c.orig	2014-09-15 11:37:05.131367662 +0000
++++ workitem.c	2014-09-15 11:38:21.367370311 +0000
+@@ -479,8 +479,11 @@
+ 			snprintf(name, sizeof(name), "%s_%02d",
+ 				 sched->ws_name, sched->ws_nthreads);
+ 		}
++                #pragma GCC diagnostic push
++                #pragma GCC diagnostic ignored "-Wformat-security"
+ 
+ 		task = kthread_run(cfs_wi_scheduler, sched, name);
++                #pragma GCC diagnostic pop
+ 		if (IS_ERR(task)) {
+ 			int rc = PTR_ERR(task);
+ 

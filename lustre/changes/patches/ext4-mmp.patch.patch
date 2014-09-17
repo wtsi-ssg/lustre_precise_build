@@ -1,5 +1,14 @@
---- ext4-mmp.patch_	2014-09-15 10:34:39.883112415 +0100
-+++ ext4-mmp.patch	2014-09-15 10:34:50.307112777 +0100
+--- ext4-mmp.patch.orig	2014-09-17 08:57:27.238115354 +0000
++++ ext4-mmp.patch	2014-09-17 09:05:04.874106016 +0000
+@@ -156,7 +156,7 @@
+ ===================================================================
+ --- /dev/null
+ +++ linux-stage/fs/ext4/mmp.c
+-@@ -0,0 +1,351 @@
++@@ -0,0 +1,354 @@
+ +#include <linux/fs.h>
+ +#include <linux/random.h>
+ +#include <linux/buffer_head.h>
 @@ -230,7 +230,10 @@
  +void __dump_mmp_msg(struct super_block *sb, struct mmp_struct *mmp,
  +                   const char *function, const char *msg)

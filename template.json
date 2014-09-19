@@ -74,7 +74,6 @@
         "scripts/vagrant.sh",
         "scripts/networking.sh",
         "scripts/sudoers.sh",
-        "scripts/additional-packages.sh",
         "scripts/compiler_tools.sh",
         "scripts/cleanup.sh",
         "scripts/minimize.sh"

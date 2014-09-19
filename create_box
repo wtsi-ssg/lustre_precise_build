@@ -2,7 +2,6 @@
 
 set -e
 
-#export PACKER_LOG=1
 rm packer_virtualbox-iso_virtualbox.box || true
 packer build -only virtualbox-iso template.json
 vagrant box remove lustre_precise_build_server || true

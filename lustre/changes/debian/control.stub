@@ -1,0 +1,30 @@
+Source: #VERSION#
+Section: unknown
+Priority: extra
+Maintainer: Guy Coates <gmpc@sanger.ac.uk>
+Build-Depends: debhelper (>= 5), autotools-dev
+Standards-Version: 3.7.2
+
+Package: #VERSION#
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: lustre-utils, lustre-dev, lustre-tests, liblustre
+Description: Lustre userspace components
+ Lustre is a scalable, secure, robust, highly-available cluster file system.
+ It is maintained by Cluster Filesystems, Inc. and available from
+ http://www.lustre.org
+ .
+ This package provides the  userspace utilities for
+ maintaining Lustre filesystems.
+
+Package: lustre-modules-#KERNELMAJOR#
+Architecture: any
+Priority: optional
+Depends: ${shlibs:Depends}, ${misc:Depends}, linux-image-#KERNELMAJOR# 
+Description: Lustre kernel modules
+ Lustre is a scalable, secure, robust, highly-available cluster file system.
+ It is maintained by Cluster Filesystems, Inc. and available from
+ http://www.lustre.org
+ .
+ This package provides the lustre kernel modules
+

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -x /usr/sbin/invoke-rc.d ] ; then
+   update-rc.d #VERSION# start 98 2 3 4 5 .  stop 01 0 1 6 . || true
+fi		

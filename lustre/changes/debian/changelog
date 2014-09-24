@@ -1,0 +1,79 @@
+lustre-exascaler-2-1 (2.5.2-1ubuntu1) precise; urgency=low
+
+   Lustre exascaler-2-1 upstream release
+
+ -- James Beal <james.beal@sanger.ac.uk>  Wed, 17 Sep 2014 08:36:39 +0100
+
+lustre-2.5.1 (2.5.1-1ubuntu1) precise; urgency=low
+
+  * Lustre 2.5.1 upstream release
+ 
+ -- James Beal <james.beal@sanger.ac.uk>  Thu, 20 Mar 2014 13:40:39 +0000
+
+lustre-2.5.1 (2.5.1.1-1ubuntu1) precise; urgency=low
+
+  * Lustre 2.5.1_RC1 upstream release
+ 
+ -- James Beal <james.beal@sanger.ac.uk>  Thu, 6 Mar 2014 13:00:38 +0000
+
+lustre-2.4.1 (2.4.1-1ubuntu1) precise; urgency=low
+
+  * Lustre 2.4.1 upstream release
+
+ -- James Beal <james.beal@sanger.ac.uk>  Thu, 19 Sep 2013 13:07:38 +0100
+
+lustre-2.4 (2.4-1ubuntu1) lucid; urgency=low
+
+  * Lustre 2.4 release new name
+
+ -- root <root@sanger.ac.uk>  Mon, 05 Aug 2013 17:44:57 +0100
+
+lustre (1.8.9wc1-1) lenny; urgency=low
+
+  * Lustre 1.8.9wc1 upstream release
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Mon, 25 Feb 2013 13:00:24 +0000
+
+lustre (1.8.3-1) lenny; urgency=low
+
+  * Lustre 1.8.3 upstream release
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Tue, 04 May 2010 10:17:01 +0100
+
+lustre (1.8.2-2) lenny; urgency=low
+
+  * Fix lfs permission problems (lustre #22127)
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Tue, 09 Mar 2010 12:10:20 +0000
+
+lustre (1.8.2-1) lenny; urgency=low
+
+  * New upstream release
+  * Removed portreserve; use /etc/bindresvport.blacklist instead.
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Fri, 19 Feb 2010 11:39:57 +0000
+
+lustre (1.8.1-1) unstable; urgency=low
+
+  * Lustre 1.8.1
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Wed, 27 May 2009 11:57:54 +0100
+
+lustre (1.6.7.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Wed, 27 May 2009 11:57:33 +0100
+
+lustre (1.6.6-2) unstable; urgency=low
+
+  * Add init script
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Wed, 10 Dec 2008 13:24:58 +0000
+
+lustre (1.6.6-1) unstable; urgency=low
+
+  * Lustre 1.6.6 Packages.
+
+ -- Guy Coates <gmpc@sanger.ac.uk>  Mon, 17 Nov 2008 17:28:21 +0000
+

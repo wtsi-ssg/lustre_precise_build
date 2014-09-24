@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -x /usr/sbin/invoke-rc.d ] ; then
+   update-rc.d -f #VERSION# remove || true
+fi		

@@ -1,0 +1,34 @@
+#!/bin/sh
+
+[ -f /etc/default/#VERSION# ] &&  . /etc/default/#VERSION#
+
+case "$1" in 
+
+start)
+echo Starting lustre filesystems.
+
+[ -x /sbin/portrelease ] && /sbin/portrelease lustre
+
+for FS in `grep -v "^#" /etc/fstab | grep lustre | awk '{print $2}'`
+do
+mount $FS
+done
+sysctl -q -p
+
+;;
+
+stop)
+echo Stopping lustre filesystems
+for FS in `grep -v "^#" /etc/mtab | grep lustre | awk '{print $2}'`
+do
+
+  if umount $FS  ; then
+      continue
+ fi
+  echo "$FS is busy: Killing processes"
+  fuser -v -k -m $FS
+  umount $FS
+done
+
+;;
+esac

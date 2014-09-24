@@ -1,0 +1,5 @@
+debian/tmp/sbin/* sbin/
+debian/tmp/usr/*  usr/
+debian/tmp/etc/* etc/
+
+

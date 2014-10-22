@@ -8,6 +8,11 @@
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
+# Disable some of the hardening options that are now used by default
+# on Precise systems
+DEB_BUILD_MAINT_OPTIONS = hardening=-format
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
 
 
 # These are used for cross-compiling and for saving the configure script

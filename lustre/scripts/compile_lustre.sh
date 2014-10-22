@@ -3,6 +3,7 @@ cd /vagrant/lustre/source/lustre-2.5.19/debian
 echo Y | ./prepare.sh /vagrant/lustre/debs/linux-image-*
 cd /vagrant/lustre/source/lustre-2.5.19
 dpkg-buildpackage -rfakeroot -uc -us
+mv /vagrant/lustre/source/*.deb /vagrant/lustre/debs/
 rm -rf  /var/lib/dkms/lustre-exascaler-2-1-client-modules
 dh_clean
 make clean

@@ -1,3 +1,9 @@
+lustre-2.5.27.ddnpf2 (2.5.2-1ubuntu2) precise; urgency=low
+
+   DDN  upstream lustre release
+
+ -- James Beal <james.beal@sanger.ac.uk>  Mon, 26 Jan 2015 10:00:39 +0000
+
 lustre-exascaler-2-1 (2.5.2-1ubuntu1) precise; urgency=low
 
    Lustre exascaler-2-1 upstream release

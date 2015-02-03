@@ -1,11 +1,11 @@
-Source: lustre-2.5.1
+Source: lustre-2.5.27.ddnpf2 
 Section: unknown
 Priority: extra
 Maintainer: Guy Coates <gmpc@sanger.ac.uk>
 Build-Depends: debhelper (>= 5), autotools-dev
 Standards-Version: 3.7.2
 
-Package: lustre-2.5.1
+Package: lustre-2.5.27.ddnpf2
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Conflicts: lustre-utils, lustre-dev, lustre-tests, liblustre
@@ -17,10 +17,10 @@ Description: Lustre userspace components
  This package provides the  userspace utilities for
  maintaining Lustre filesystems.
 
-Package: lustre-modules-2.6.32-dss-jb23-431.17.1.el6-exascaler-2-1
+Package: lustre-modules-2.6.32-jb23-431.17.1.el6-2.5.27.ddnpf2
 Architecture: any
 Priority: optional
-Depends: ${shlibs:Depends}, ${misc:Depends}, linux-image-2.6.32-dss-jb23-431.17.1.el6-exascaler-2-1 
+Depends: ${shlibs:Depends}, ${misc:Depends}, linux-image-2.6.32-jb23-431.17.1.el6-2.5.27.ddnpf2 
 Description: Lustre kernel modules
  Lustre is a scalable, secure, robust, highly-available cluster file system.
  It is maintained by Cluster Filesystems, Inc. and available from

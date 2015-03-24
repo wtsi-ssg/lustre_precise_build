@@ -19,13 +19,6 @@ apt-get -y install linux-headers-$(uname -r)
 
 apt-get -y clean
 
-# setup zsh - the best shell ever
-VAGRANT_ZSHRC=/home/vagrant/.zshrc
-EASYBIB_ZSHRC=https://gist.github.com/till/f683a2237571936c2df2/raw/201a181e0fe647d3922246758e7c07d96f59f6cc/.zshrc
-wget $EASYBIB_ZSHRC -O $VAGRANT_ZSHRC
-chown vagrant:vagrant $VAGRANT_ZSHRC
-usermod -s /bin/zsh vagrant
-
 #we have to reboot here, so the re-build of the virtualbox additions links against the new kernel/headers
 reboot
 

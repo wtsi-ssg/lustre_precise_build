@@ -1,4 +1,8 @@
 {
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_KEY`}}"
+  },
   "builders": [
     {
       "boot_command": [
@@ -54,7 +58,18 @@
         ]
       ],
       "virtualbox_version_file": ".vbox_version"
-    }
+    },
+  {
+            "type": "amazon-ebs",
+      "access_key":     "{{user `aws_access_key`}}",
+      "secret_key":     "{{user `aws_secret_key`}}",
+      "region":         "eu-west-1",
+      "source_ami":     "ami-65cb5a12",
+      "instance_type":  "m3.medium",
+      "ssh_username":   "ubuntu",
+      "ami_name":       "Lustre builder {{timestamp}}",
+      "associate_public_ip_address":    "true"
+  }
   ],
   "post-processors": [
     {
@@ -63,10 +78,19 @@
     }
   ],
   "provisioners": [
+  {
+      "type": "file",
+      "only": ["amazon-ebs"],
+      "source": "./lustre/scripts/unpack_stash.sh",
+      "destination": "/home/ubuntu/rc.local"
+  },
     {
       "override": {
         "virtualbox-iso": {
           "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+        },
+        "amazon-ebs": {
+          "execute_command": "sudo bash '{{.Path}}'"
         }
       },
       "scripts": [
@@ -76,10 +100,17 @@
         "scripts/sudoers.sh",
         "scripts/compiler_tools.sh",
         "scripts/cleanup.sh",
-        "scripts/minimize.sh"
+        "scripts/minimize.sh",
+        "scripts/aws.sh"
       ],
       "type": "shell"
-    }
+    },
+  {
+      "type": "file",
+      "only": ["amazon-ebs"],
+      "source": "./lustre/",
+      "destination": "/stash"
+  }
   ]
 }
 

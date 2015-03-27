@@ -12,7 +12,7 @@ Taking the most automated route the process would be:
   ./create_box # Wait while your new vm is installed
   vagrant up
   vagrant ssh
-      sudo bash /vagrant/lustre/scripts/build_all.sh
+      time sudo bash /vagrant/lustre/scripts/build_all.sh
 ```
 
 and for AWS:

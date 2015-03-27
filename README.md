@@ -15,6 +15,15 @@ Taking the most automated route the process would be:
       sudo bash /vagrant/lustre/scripts/build_all.sh
 ```
 
+and for AWS:
+
+```
+export AWS_SECRET_KEY=....... ; export AWS_ACCESS_KEY=........
+packer build -only amazon-ebs template.json
+(start an m3.xlarge instance from the new AMI)
+log in and run: sudo bash /vagrant/lustre/scripts/build_all.sh
+```
+
 The log should appear in lustre/LOG and the output deb files should appear in lustre/debs
 
 #Packer ( Building the virtual machine )

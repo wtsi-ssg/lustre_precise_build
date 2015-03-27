@@ -3,7 +3,10 @@
 set -e
 
 rm packer_virtualbox-iso_virtualbox.box || true
-#packer build -only virtualbox-iso template.json
-packer build -only amazon-ebs template.json
-vagrant box remove lustre_precise_build_server || true
-vagrant box add lustre_precise_build_server  packer_virtualbox-iso_virtualbox.box
+if [ "$AWS_ACCESS_KEY" != "" ]; then
+  packer build -only amazon-ebs template.json
+else
+  packer build -only virtualbox-iso template.json
+  vagrant box remove lustre_precise_build_server || true
+  vagrant box add lustre_precise_build_server  packer_virtualbox-iso_virtualbox.box
+fi

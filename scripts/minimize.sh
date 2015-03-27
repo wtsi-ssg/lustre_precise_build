@@ -4,6 +4,9 @@
 #  - http://vstone.eu/reducing-vagrant-box-size/
 #  - https://github.com/mitchellh/vagrant/issues/343
 
+# only continue with this script in a vagrant context
+id vagrant >/dev/null 2>&1 || exit 0
+
 aptitude -y purge ri
 aptitude -y purge installation-report landscape-common wireless-tools wpasupplicant ubuntu-serverguide
 aptitude -y purge python-dbus libnl1 python-smartpm python-twisted-core libiw30

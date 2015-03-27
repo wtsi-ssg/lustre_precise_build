@@ -12,7 +12,16 @@ Taking the most automated route the process would be:
   ./create_box # Wait while your new vm is installed
   vagrant up
   vagrant ssh
-      sudo bash /vagrant/lustre/scripts/build_all.sh
+      time sudo bash /vagrant/lustre/scripts/build_all.sh
+```
+
+and for AWS:
+
+```
+export AWS_SECRET_KEY=....... ; export AWS_ACCESS_KEY=........
+packer build -only amazon-ebs template.json
+(start an m3.xlarge instance from the new AMI)
+log in and run: sudo bash /vagrant/lustre/scripts/build_all.sh
 ```
 
 The log should appear in lustre/LOG and the output deb files should appear in lustre/debs

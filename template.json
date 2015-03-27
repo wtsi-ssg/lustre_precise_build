@@ -78,6 +78,12 @@
     }
   ],
   "provisioners": [
+  {
+      "type": "file",
+      "only": ["amazon-ebs"],
+      "source": "./lustre/scripts/unpack_stash.sh",
+      "destination": "/home/ubuntu/rc.local"
+  },
     {
       "override": {
         "virtualbox-iso": {
@@ -103,7 +109,7 @@
       "type": "file",
       "only": ["amazon-ebs"],
       "source": "./lustre/",
-      "destination": "/vagrant/lustre"
+      "destination": "/stash"
   }
   ]
 }

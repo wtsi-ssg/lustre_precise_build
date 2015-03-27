@@ -20,6 +20,17 @@ fi
 
 
 
+cat <<EOT >  /tmp/changelog_$$
+$LUSTREVER (1.0.0) precise; urgency=low
+
+   DDN  upstream lustre release
+
+ -- Auto Build <james.beal@sanger.ac.uk>  `date -R`
+
+EOT
+cat changelog >>  /tmp/changelog_$$
+cp /tmp/changelog_$$ changelog
+
 
 
 

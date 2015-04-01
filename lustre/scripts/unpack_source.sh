@@ -8,7 +8,9 @@ cd /vagrant/lustre/downloads/tmp
 echo "Unpacking linux kernel"
 tar xf /vagrant/lustre/downloads/linux-2.6.32-431.17.1.el6.x86_64.tar.gz 
 echo "Unpacking lustre source"
-tar xf /vagrant/lustre/downloads/sanger-lustre-2.5.29.ddnpf3.tar.gz 
+alien -t  /vagrant/lustre/downloads/lustre-2.5.29.ddnpf3-2.6.32_431.29.2.el6_lustre.2.5.29.ddnpf3.x86_64_g6a6b29c.src.rpm 
+tar xvf lustre-2.5.29.ddnpf3.tgz 
+tar xvf lustre-2.5.29.ddnpf3.tar.gz 
 echo "Unpacking Mellanox file"
 tar xf /vagrant/lustre/downloads/MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64.tgz 
 echo "Moving files to destination"

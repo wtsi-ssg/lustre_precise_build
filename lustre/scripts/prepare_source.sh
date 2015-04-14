@@ -17,3 +17,7 @@ cd /vagrant/lustre/source/$LUSTREVER
 echo "Copying debian rules in to place"
 rsync -av /vagrant/lustre/changes/debian .
 mv /vagrant/lustre/source/$LUSTREVER/debian/dkms.conf /vagrant/lustre/source/$LUSTREVER/
+if [ "${LUSTRE_VERSION}" = "2.7.0" ]; then
+ echo "Applying lustre patch"
+ cat /vagrant/lustre/changes/2.7.0/lustre/utils/liblustreapi_util.c.patch | patch lustre/utils/liblustreapi_util.c
+fi

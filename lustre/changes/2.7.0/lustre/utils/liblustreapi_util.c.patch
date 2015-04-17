@@ -1,0 +1,14 @@
+--- lustre/utils/liblustreapi_util.c.orig	2015-04-14 15:00:34.000000000 +0000
++++ lustre/utils/liblustreapi_util.c	2015-04-14 15:01:56.000000000 +0000
+@@ -68,7 +68,10 @@
+ 	if (fd >= 0) {
+ 		unsigned int rnumber;
+ 
+-		(void)read(fd, &rnumber, sizeof(rnumber));
++                #pragma GCC diagnostic push
++                #pragma GCC diagnostic ignored "-Wunused-result"
++                (void)read(fd, &rnumber, sizeof(rnumber));
++                #pragma GCC diagnostic pop
+ 		seed ^= rnumber;
+ 		close(fd);
+ 	}

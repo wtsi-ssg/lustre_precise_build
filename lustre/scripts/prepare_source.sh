@@ -21,3 +21,7 @@ if [ "${LUSTRE_VERSION}" = "2.7.0" ]; then
  echo "Applying lustre patch"
  cat /vagrant/lustre/changes/2.7.0/lustre/utils/liblustreapi_util.c.patch | patch lustre/utils/liblustreapi_util.c
 fi
+if [ "${LUSTRE_VERSION}" = "2.5.37-ddn" ]; then
+ echo "Changing dkms.conf"
+ cp /vagrant/lustre/changes/lustre-2.5.37-ddn/dkms.conf /vagrant/lustre/changes/debian/
+fi

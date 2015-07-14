@@ -21,6 +21,10 @@ if [ "${LUSTREVER}" = "lustre-2.5.29-ddnpf5-ddn-197" ] ; then
  tar xvf  /vagrant/lustre/downloads/lustre-2.5.29.ddnpf5.tar.gz
  mv lustre-2.5.29.ddnpf5 "${LUSTREVER}"
 fi
+if [ "${LUSTREVER}" = "lustre-2.5.29-ddnpf5-ddn-197-sanger-fix" ] ; then
+ tar xvf  /vagrant/lustre/downloads/lustre-2.5.29.ddnpf5.tar.gz
+ mv lustre-2.5.29.ddnpf5 "${LUSTREVER}"
+fi
 if [ "${LUSTREVER}" = "lustre-2.5.37-ddn" ] ; then
  tar xvf  /vagrant/lustre/downloads/lustre-2.5.37.ddn1.tar
  mv lustre-2.5.37.ddn1 "${LUSTREVER}"

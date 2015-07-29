@@ -25,7 +25,7 @@ if [ "${LUSTRE_VERSION}" = "2.5.29-ddnpf5-ddn-197-sanger-fix" ]; then
  echo "Applying lustre patch"
  cat /vagrant/lustre/changes/lustre-2.5.29-ddnpf5-ddn-197-sanger-fix/lustre/utils/liblustreapi.c.patch | patch lustre/utils/liblustreapi.c
 fi
-if [ "${LUSTRE_VERSION}" = "2.5.37-ddn" -o "${LUSTRE_VERSION}" = "Sanger-lustre-2.5.37" ]; then
+if [ "${LUSTRE_VERSION}" = "2.5.37-ddn" -o "${LUSTRE_VERSION}" = "2.5.37-ddn-2" ]; then
  echo "Changing dkms.conf"
  cp /vagrant/lustre/changes/lustre-2.5.37-ddn/dkms.conf /vagrant/lustre/changes/debian/
 fi

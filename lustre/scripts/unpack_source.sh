@@ -33,7 +33,7 @@ if [ "${LUSTREVER}" = "lustre-2.5.37-ddn" ] ; then
  tar xvf  /vagrant/lustre/downloads/lustre-2.5.37.ddn1.tar
  mv lustre-2.5.37.ddn1 "${LUSTREVER}"
 fi
-if [ "${LUSTREVER}" = "Sanger-lustre-2.5.37" ] ; then
+if [ "${LUSTREVER}" = "lustre-2.5.37-ddn-2" ] ; then
  tar xvf  /vagrant/lustre/downloads/Sanger-lustre-2.5.37.tar.gz 
  mv lustre-2.5.37 "${LUSTREVER}"
 fi

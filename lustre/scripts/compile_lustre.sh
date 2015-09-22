@@ -1,4 +1,5 @@
 #!/bin/bash
+export CC=gcc-4.4 
 cd /vagrant/lustre/source/lustre-$LUSTRE_VERSION/debian
 echo Y | ./prepare.sh /vagrant/lustre/debs/linux-image-*
 cd /vagrant/lustre/source/lustre-$LUSTRE_VERSION

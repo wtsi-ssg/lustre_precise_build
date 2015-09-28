@@ -1,7 +1,7 @@
 #!/bin/bash
 echo Output redirected to  /vagrant/lustre/LOG 
 rm -f  /vagrant/lustre/LOG
-export LUSTREVER="lustre-2.5.29-ddnpf5"
+export LUSTREVER="lustre-2.7.0"
 case "${LUSTREVER}" in
   "lustre-2.7.0")
      export GIT_TAG="v2_7_0_0"

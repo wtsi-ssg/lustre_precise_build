@@ -1,7 +1,7 @@
 #!/bin/bash
 echo Output redirected to  /vagrant/lustre/LOG 
 rm -f  /vagrant/lustre/LOG
-export LUSTREVER="lustre-2.5.39-ddn-1"
+export LUSTREVER="lustre-2.5.39-ddn-3"
 case "${LUSTREVER}" in
   "lustre-2.7.0")
      export GIT_TAG="v2_7_0_0"
@@ -31,9 +31,10 @@ case "${LUSTREVER}" in
      export GIT_TAG=""
      export LUSTRE_VERSION="2.5.37-ddn-2"
      ;;
-   "lustre-2.5.39-ddn-1")
+   "lustre-2.5.39-ddn-3")
      export GIT_TAG=""
-     export LUSTRE_VERSION="2.5.39-ddn-1"
+     export LUSTRE_VERSION="2.5.39-ddn-3"
+     ;;
 esac
 
 mkdir /vagrant/lustre/LOG

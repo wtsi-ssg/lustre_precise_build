@@ -1,116 +1,119 @@
 {
-  "variables": {
-    "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
-    "aws_secret_key": "{{env `AWS_SECRET_KEY`}}"
-  },
-  "builders": [
-    {
-      "boot_command": [
-        "<esc><wait>",
-        "<esc><wait>",
-        "<enter><wait>",
-        "/install/vmlinuz<wait>",
-        " auto<wait>",
-        " console-setup/ask_detect=false<wait>",
-        " console-setup/layoutcode=us<wait>",
-        " console-setup/modelcode=pc105<wait>",
-        " debconf/frontend=noninteractive<wait>",
-        " debian-installer=en_US<wait>",
-        " fb=false<wait>",
-        " initrd=/install/initrd.gz<wait>",
-        " kbd-chooser/method=us<wait>",
-        " keyboard-configuration/layout=USA<wait>",
-        " keyboard-configuration/variant=USA<wait>",
-        " locale=en_US<wait>",
-        " netcfg/get_domain=vm<wait>",
-        " netcfg/get_hostname=vagrant<wait>",
-        " noapic<wait>",
-        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>",
-        " -- <wait>",
-        "<enter><wait>"
-      ],
-      "boot_wait": "10s",
-      "disk_size": 40960,
-      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "guest_os_type": "Ubuntu_64",
-      "http_directory": "http",
-      "iso_checksum": "e83adb9af4ec0a039e6a5c6e145a34de",
-      "iso_checksum_type": "md5",
-      "iso_url": "http://old-releases.ubuntu.com/releases/12.04.4/ubuntu-12.04.4-server-amd64.iso",
-      "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
-      "ssh_password": "vagrant",
-      "ssh_port": 22,
-      "ssh_username": "vagrant",
-      "ssh_wait_timeout": "10000s",
-      "type": "virtualbox-iso",
-      "vboxmanage": [
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--memory",
-          "384"
-        ],
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--cpus",
-          "1"
-        ]
-      ],
-      "virtualbox_version_file": ".vbox_version"
-    },
-  {
-            "type": "amazon-ebs",
-      "access_key":     "{{user `aws_access_key`}}",
-      "secret_key":     "{{user `aws_secret_key`}}",
-      "region":         "eu-west-1",
-      "source_ami":     "ami-65cb5a12",
-      "instance_type":  "m3.medium",
-      "ssh_username":   "ubuntu",
-      "ami_name":       "Lustre builder {{timestamp}}",
-      "associate_public_ip_address":    "true"
-  }
-  ],
-  "post-processors": [
-    {
-      "keep_input_artifact": false,
-      "type": "vagrant"
-    }
-  ],
-  "provisioners": [
-  {
-      "type": "file",
-      "only": ["amazon-ebs"],
-      "source": "./lustre/scripts/unpack_stash.sh",
-      "destination": "/home/ubuntu/rc.local"
-  },
-    {
-      "override": {
-        "virtualbox-iso": {
-          "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+    "builders": [
+        {
+            "boot_command": [
+                "<esc><wait>",
+                "<esc><wait>",
+                "<enter><wait>",
+                "/install/vmlinuz<wait>",
+                " auto<wait>",
+                " console-setup/ask_detect=false<wait>",
+                " console-setup/layoutcode=us<wait>",
+                " console-setup/modelcode=pc105<wait>",
+                " debconf/frontend=noninteractive<wait>",
+                " debian-installer=en_US<wait>",
+                " fb=false<wait>",
+                " initrd=/install/initrd.gz<wait>",
+                " kbd-chooser/method=us<wait>",
+                " keyboard-configuration/layout=USA<wait>",
+                " keyboard-configuration/variant=USA<wait>",
+                " locale=en_US<wait>",
+                " netcfg/get_domain=vm<wait>",
+                " netcfg/get_hostname=vagrant<wait>",
+                " noapic<wait>",
+                " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>",
+                " -- <wait>",
+                "<enter><wait>"
+            ],
+            "boot_wait": "10s",
+            "disk_size": 40960,
+            "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+            "guest_os_type": "Ubuntu_64",
+            "http_directory": "http",
+            "iso_checksum": "e83adb9af4ec0a039e6a5c6e145a34de",
+            "iso_checksum_type": "md5",
+            "iso_url": "http://old-releases.ubuntu.com/releases/12.04.4/ubuntu-12.04.4-server-amd64.iso",
+            "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "ssh_username": "vagrant",
+            "ssh_wait_timeout": "10000s",
+            "type": "virtualbox-iso",
+            "vboxmanage": [
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
+                    "384"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
+                    "1"
+                ]
+            ],
+            "virtualbox_version_file": ".vbox_version"
         },
-        "amazon-ebs": {
-          "execute_command": "sudo bash '{{.Path}}'"
+        {
+            "access_key": "{{user `aws_access_key`}}",
+            "ami_name": "Lustre builder {{timestamp}}",
+            "associate_public_ip_address": "true",
+            "instance_type": "m3.medium",
+            "region": "eu-west-1",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "source_ami": "ami-65cb5a12",
+            "ssh_username": "ubuntu",
+            "type": "amazon-ebs"
         }
-      },
-      "scripts": [
-        "scripts/update.sh",
-        "scripts/vagrant.sh",
-        "scripts/networking.sh",
-        "scripts/sudoers.sh",
-        "scripts/compiler_tools.sh",
-        "scripts/cleanup.sh",
-        "scripts/minimize.sh",
-        "scripts/aws.sh"
-      ],
-      "type": "shell"
-    },
-  {
-      "type": "file",
-      "only": ["amazon-ebs"],
-      "source": "./lustre/",
-      "destination": "/stash"
-  }
-  ]
+    ],
+    "post-processors": [
+        {
+            "keep_input_artifact": false,
+            "type": "vagrant"
+        }
+    ],
+    "provisioners": [
+        {
+            "destination": "/home/ubuntu/rc.local",
+            "only": [
+                "amazon-ebs"
+            ],
+            "source": "./lustre/scripts/unpack_stash.sh",
+            "type": "file"
+        },
+        {
+            "override": {
+                "amazon-ebs": {
+                    "execute_command": "sudo bash '{{.Path}}'"
+                },
+                "virtualbox-iso": {
+                    "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                }
+            },
+            "scripts": [
+                "scripts/update.sh",
+                "scripts/vagrant.sh",
+                "scripts/networking.sh",
+                "scripts/sudoers.sh",
+                "scripts/compiler_tools.sh",
+                "scripts/cleanup.sh",
+                "scripts/minimize.sh",
+                "scripts/aws.sh"
+            ],
+            "type": "shell"
+        },
+        {
+            "destination": "/stash",
+            "only": [
+                "amazon-ebs"
+            ],
+            "source": "./lustre/",
+            "type": "file"
+        }
+    ],
+    "variables": {
+        "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+        "aws_secret_key": "{{env `AWS_SECRET_KEY`}}"
+    }
 }
-

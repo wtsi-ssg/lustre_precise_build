@@ -37,7 +37,7 @@
             "ssh_password": "vagrant",
             "ssh_port": 22,
             "ssh_username": "vagrant",
-            "ssh_wait_timeout": "10000s",
+             "ssh_wait_timeout": "30m",
             "type": "virtualbox-iso",
             "vboxmanage": [
                 [
@@ -65,19 +65,29 @@
             "source_ami": "ami-65cb5a12",
             "ssh_username": "ubuntu",
             "type": "amazon-ebs"
+        },
+        {
+            "flavor": "m1.large",
+            "image_name": "ubuntu precise",
+            "source_image": "82b55c8c-cce1-4301-92c4-b005180531de",
+            "ssh_username": "ubuntu",
+            "use_floating_ip" : "true",
+            "floating_ip_pool" : "nova",
+            "type": "openstack",
+            "security_groups" : "ssh"
         }
     ],
     "post-processors": [
-        {
-            "keep_input_artifact": false,
-            "type": "vagrant"
-        }
+    {
+  "type": "vagrant",
+  "only": ["virtualbox-iso"]
+}
     ],
     "provisioners": [
         {
             "destination": "/home/ubuntu/rc.local",
             "only": [
-                "amazon-ebs"
+                "amazon-ebs","openstack"
             ],
             "source": "./lustre/scripts/unpack_stash.sh",
             "type": "file"
@@ -89,6 +99,9 @@
                 },
                 "virtualbox-iso": {
                     "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                },
+                "openstack": {
+                    "execute_command": "sudo bash '{{.Path}}'"
                 }
             },
             "scripts": [
@@ -106,7 +119,7 @@
         {
             "destination": "/stash",
             "only": [
-                "amazon-ebs"
+                "amazon-ebs", "openstack"
             ],
             "source": "./lustre/",
             "type": "file"

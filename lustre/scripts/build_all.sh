@@ -2,6 +2,7 @@
 echo Output redirected to  /vagrant/lustre/LOG 
 rm -f  /vagrant/lustre/LOG
 export LUSTREVER="lustre-2.7.0"
+export KERNEL="linux-2.6.32-431.17.1.el6.x86_64"
 case "${LUSTREVER}" in
   "lustre-2.7.0")
      export GIT_TAG="v2_7_0_0"
@@ -31,7 +32,15 @@ case "${LUSTREVER}" in
      export GIT_TAG=""
      export LUSTRE_VERSION="2.5.37-ddn-2"
      ;;
+   "lustre-2.5.39-ddn-3")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.39-ddn-3"
+     export KERNEL="linux-2.6.32-573.3.1.el6.x86_64"
+     export CC=gcc-4.4
+     ;;
 esac
+# Fix the Kernel version
+sed -i changes/debian/rules -e 's/KERNEL_PATH/'$KERNEL'/'
 
 mkdir /vagrant/lustre/LOG
 bash  /vagrant/lustre/scripts/download_source.sh | tee /vagrant/lustre/LOG/download.log  >> /vagrant/lustre/LOG/ALL  2>&1 || exit

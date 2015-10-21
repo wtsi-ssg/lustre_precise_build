@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /vagrant/lustre/source/linux-2.6.32-431.17.1.el6.x86_64/
+cd /vagrant/lustre/source/$KERNEL
 ln -s -f /vagrant/lustre/source/$LUSTREVER/lustre/kernel_patches/series/2.6-rhel6.series series
 ln -s -f /vagrant/lustre/source/$LUSTREVER/lustre/kernel_patches/patches patches
 echo "Apply lustre patches"

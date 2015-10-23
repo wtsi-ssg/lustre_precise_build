@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /vagrant/lustre/source/$KERNEL
-make oldconfig
+cat /dev/null | make oldconfig
 make kpkg-clean
 export CC=gcc-4.4 
 export DATE="`date -u +%F%H%M |sed -e 's/-//g'`"

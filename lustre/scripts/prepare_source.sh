@@ -7,8 +7,10 @@ quilt push -av || exit 1
 echo Patching Linux kernel source
 echo "Fixing issue with gcc  -dumpversion not returning a triple"
 cat /vagrant/lustre/changes/patches/Makefile.patch | patch Makefile || exit 2
-echo "Fixing issue with http://stackoverflow.com/questions/10425761/kernel-compile-error-gcc-error-elf-i386-no-such-file-or-directory"
-cat /vagrant/lustre/changes/patches/arch_x86_vdso_Makefile.patch | patch arch/x86/vdso/Makefile || exit 3
+if [ "$KERNEL" = "linux-2.6.32-431.17.1.el6.x86_64" ] ; then 
+  echo "Fixing issue with http://stackoverflow.com/questions/10425761/kernel-compile-error-gcc-error-elf-i386-no-such-file-or-directory"
+  cat /vagrant/lustre/changes/patches/arch_x86_vdso_Makefile.patch | patch arch/x86/vdso/Makefile || exit 3
+fi 
 echo "Copy the config from lustre to linux kernel"
 cp $SOURCE_DIR/$LUSTREVER/lustre/kernel_patches/kernel_configs/kernel-2.6.32-2.6-rhel6-x86_64.config ./.config
 echo "Remove the storage related module that does not build"

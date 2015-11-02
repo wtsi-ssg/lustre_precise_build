@@ -1,0 +1,46 @@
+case "${LUSTREVER}" in
+  "lustre-2.7.0")
+     export GIT_TAG="v2_7_0_0"
+     export LUSTRE_VERSION="2.7.0"
+     ;;
+  "lustre-2.7.61")
+     export GIT_TAG="v2.7.61"
+     export LUSTRE_VERSION="2.7.61"
+     export KERNEL="linux-2.6.32-573.3.1.el6.x86_64"
+     ;;
+   "lustre-2.5.29-ddnpf5")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.29-ddnpf5"
+     ;;
+   "lustre-2.5.29-ddnpf5-ddn-197")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.29-ddnpf5-ddn-197"
+     ;;
+   "lustre-2.5.29-ddnpf5-ddn-197-sanger-fix")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.29-ddnpf5-ddn-197-sanger-fix"
+     ;;
+   "lustre-2.5.29-ddnpf5-2")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.29-ddnpf5-2"
+     ;;
+   "lustre-2.5.37-ddn")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.37-ddn"
+     ;;
+   "lustre-2.5.37-ddn-2")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.37-ddn-2"
+     ;;
+   "lustre-2.5.39-ddn-3")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.39-ddn-3"
+     export KERNEL="linux-2.6.32-573.3.1.el6.x86_64"
+     export CC=gcc-4.4
+     ;;
+esac
+# Allows the build to be customised eg for mac on case insensitive filesystems
+if [ -x  /vagrant/lustre/scripts/adjust ]; then
+  .  /vagrant/lustre/scripts/adjust
+fi
+export KERNEL_SOURCE="${SOURCE_DIR}/${KERNEL}"

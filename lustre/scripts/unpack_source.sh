@@ -1,10 +1,8 @@
 #!/bin/bash
 echo "Making destination directories"
-mkdir -p /vagrant/lustre/downloads/tmp
 mkdir -p /vagrant/lustre/debs
-rm -rf   /vagrant/lustre/source
-mkdir -p /vagrant/lustre/source
-cd /vagrant/lustre/downloads/tmp
+mkdir -p $SOURCE_DIR/tmp
+cd $SOURCE_DIR/tmp
 echo "Unpacking linux kernel"
 tar xf /vagrant/lustre/downloads/${KERNEL}.tar.gz  
 echo "Unpacking lustre source"
@@ -53,11 +51,11 @@ fi
 echo "Unpacking Mellanox file"
 tar xf /vagrant/lustre/downloads/MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64.tgz 
 echo "Moving files to destination"
-mv /vagrant/lustre/downloads/tmp/$LUSTREVER /vagrant/lustre/source/
-mv /vagrant/lustre/downloads/tmp/$KERNEL  /vagrant/lustre/source/
-mv /vagrant/lustre/downloads/tmp/MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64/DEBS/mlnx-ofed-kernel-dkms_2.1-OFED.2.1.1.0.6.1.g75b4801_all.deb /vagrant/lustre/debs/
+mv $SOURCE_DIR/tmp/$LUSTREVER $SOURCE_DIR/
+mv $SOURCE_DIR/tmp/$KERNEL  $SOURCE_DIR/
+mv $SOURCE_DIR/tmp/MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64/DEBS/mlnx-ofed-kernel-dkms_2.1-OFED.2.1.1.0.6.1.g75b4801_all.deb /vagrant/lustre/debs/
 cd /
-rm -rf  /vagrant/lustre/downloads/tmp
+rm -rf  $SOURCE_DIR/tmp
 echo "Installing ofed mellanox dpms package"
 apt-get -y install  linux-headers-generic
 apt-get -y -f install

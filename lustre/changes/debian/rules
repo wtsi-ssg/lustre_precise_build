@@ -25,7 +25,7 @@ DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 config.status: configure
 	dh_testdir
 	# Add here commands to configure the package.
-	./configure  --enable-mpitests=no --with-linux=/vagrant/lustre/source/KERNEL_PATH/
+	./configure  --enable-mpitests=no --with-linux=KERNEL_SOURCE
 	# We have mpitests=no to allows package to be used on lenny&lucid.
 
 build: build-stamp

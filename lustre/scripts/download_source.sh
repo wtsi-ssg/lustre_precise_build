@@ -35,5 +35,5 @@ fi
 if [  "`md5sum MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64.tgz |  awk '{print $1}'`" != "f590709dd4e9a31dd05251bcb66241cc"  ] ; then
   rm -f  MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64.tgz
   #wget http://www.mellanox.com/downloads/ofed/MLNX_OFED-2.1-1.0.6/MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64.tgz
-  wget ftp://ftp.sanger.ac.uk/pub/jb23/MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64.tgz
+  wget ftp://ftp.sanger.ac.uk/pub/users/jb23/MLNX_OFED_LINUX-2.1-1.0.6-ubuntu12.04-x86_64.tgz
 fi

@@ -39,6 +39,10 @@ if [ "${LUSTREVER}" = "lustre-2.5.39-ddn-3" ] ; then
  tar xvf   /vagrant/lustre/downloads/lustre-2.5.39-ddn3.tar.gz
  mv lustre-2.5.39 "${LUSTREVER}"
 fi
+if [ "${LUSTREVER}" = "lustre-2.5.39-ddn-5" ] ; then
+ tar xvf   /vagrant/lustre/downloads/lustre-2.5.39-ddn5.tar.gz
+ mv lustre-2.5.39 "${LUSTREVER}"
+fi
 if [ "${GIT_TAG}" != "" ] ; then
   tar xvf /vagrant/lustre/downloads/${LUSTREVER}.tar.gz 
   DATE="`date -u +%F%H%M |sed -e 's/-//g'`"

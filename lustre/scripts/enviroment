@@ -38,6 +38,12 @@ case "${LUSTREVER}" in
      export KERNEL="linux-2.6.32-573.3.1.el6.x86_64"
      export CC=gcc-4.4
      ;;
+   "lustre-2.5.39-ddn-5")
+     export GIT_TAG=""
+     export LUSTRE_VERSION="2.5.39-ddn-5"
+     export KERNEL="linux-2.6.32-573.3.1.el6.x86_64"
+     export CC=gcc-4.4
+     ;;
 esac
 # Allows the build to be customised eg for mac on case insensitive filesystems
 if [ -x  /vagrant/lustre/scripts/adjust ]; then

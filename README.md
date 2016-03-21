@@ -7,7 +7,7 @@ To use it you must have both http://www.packer.io/ and http://www.vagrantup.com/
 Taking the most automated route the process would be:
 
 ```
-  git clone https://github.com/james-beal/lustre_precise_build.git
+  git clone https://github.com/wtsi-ssg/lustre_precise_build.git
   cd lustre_precise_build
   ./create_box # Wait while your new vm is installed
   vagrant up
